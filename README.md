@@ -1,6 +1,6 @@
-# New project
+# Spotify search
 
-A new React project with TailwindCSS
+A React app to search for artist, albums, and tracks using Spotify's API.
 
 ## Getting started
 
