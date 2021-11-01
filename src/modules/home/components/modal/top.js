@@ -10,7 +10,7 @@ const Top = ({ imgSrc, title, handleCloseClick }) => {
       }}
       className="h-60 sm:h-72 relative rounded-t-md  bg-cover bg-center "
     >
-      <div className="absolute inset-0 bg-gray-900 opacity-40" />
+      <div className="absolute inset-0 bg-black opacity-50" />
       <div className="flex flex-col absolute inset-4 justify-between">
         <div className="w-full flex items-end justify-end mb-2 ">
           <FontAwesomeIcon

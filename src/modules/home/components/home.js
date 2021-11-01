@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer, useContext } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import fetchReducer from "../reducers/fetchReducer";
 import fetchHits from "../api/fetchHits";

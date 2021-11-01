@@ -4,6 +4,7 @@ import fetchMoreReducer from "../reducers/fetchMoreReducer.js";
 import { AuthContext } from "../context/auth-context";
 import fetchMoreHits from "../api/fetchMoreHits";
 import Modal from "./modal";
+import getItemImg from "../api/getItemImg";
 
 const ResultsList = ({ initialHits, label, dataType }) => {
   const { authToken } = useContext(AuthContext);
@@ -35,14 +36,8 @@ const ResultsList = ({ initialHits, label, dataType }) => {
       <div className="mb-5 gap-3 grid grid-cols-1 sm:grid-cols-3">
         {hits &&
           hits.map((item, idx) => {
-            const { id, name, images } = item;
-            let itemImg;
-            if (images && images.length > 0) {
-              itemImg = images[1] || images[0];
-            }
-            if (dataType === "tracks" && item.album && item.album.images) {
-              itemImg = item.album.images[1] || item.album.images[0];
-            }
+            const { id, name } = item;
+            const itemImg = getItemImg(item, dataType)
             return (
               <ResultsItem
                 // use index in key to handle occasions where the same item is

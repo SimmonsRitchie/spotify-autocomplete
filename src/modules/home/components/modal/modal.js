@@ -1,5 +1,8 @@
 import React from "react";
-import ModalOverlay from "./modal-overlay";
+import getItemImg from "../../api/getItemImg";
+import BodyAlbum from "./body-album";
+import BodyTrack from "./body-track";
+import Overlay from "./overlay";
 import Top from "./top";
 
 const Modal = ({ modalData, setModalData, dataType }) => {
@@ -11,12 +14,17 @@ const Modal = ({ modalData, setModalData, dataType }) => {
   };
   console.log("modalData", modalData);
   console.log("dataType", dataType);
-  const imgSrc =
-    modalData.images && modalData.images.length > 0
-      ? `url(${modalData.images[0].url})`
-      : undefined;
+
+  const itemImg = getItemImg(modalData, dataType)
+  console.log('modal itemImg',itemImg)
+  const imgSrc = itemImg && `url(${itemImg.url})`;
+  const RENDER_BODY_ENUM = {
+    albums: <BodyAlbum coreData={modalData} />,
+    artists: <BodyTrack coreData={modalData} />,
+    tracks: <div>Tracks!</div>,
+  };
   return (
-    <ModalOverlay setModalData={setModalData}>
+    <Overlay setModalData={setModalData}>
       <div className="w-full p-3 flex items-center justify-center">
         <div
           className="bg-gray-200 w-full sm:w-96 shadow-lg"
@@ -27,10 +35,10 @@ const Modal = ({ modalData, setModalData, dataType }) => {
             title={modalData.name}
             handleCloseClick={handleCloseClick}
           />
-          <div className="p-4">modal</div>
+          <div className="p-4">{RENDER_BODY_ENUM[dataType]}</div>
         </div>
       </div>
-    </ModalOverlay>
+    </Overlay>
   );
 };
 
