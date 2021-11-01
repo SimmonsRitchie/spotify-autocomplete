@@ -55,7 +55,7 @@ const ResultsList = ({ initialHits, label, dataType }) => {
           className="bg-blue-800 text-white font-semibold text-sm px-3 py-1.5 rounded uppercase "
           onClick={loadMore}
         >
-          {isLoading ? "loading..." : "Load more"}
+          {isLoading ? "loading..." : "More results"}
         </button>
       )}
     </div>
