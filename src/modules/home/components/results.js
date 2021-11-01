@@ -7,7 +7,7 @@ const Results = ({ hits }) => {
   }
   console.log("results:", hits);
   return (
-    <div className="w-full flex flex-col gap-7">
+    <div className="w-full flex flex-col gap-7 max-w-5xl">
       <ResultsList
         initialHits={hits}
         label="Artists"
