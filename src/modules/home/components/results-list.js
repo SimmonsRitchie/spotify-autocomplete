@@ -62,8 +62,5 @@ const ResultsList = ({ initialHits, label, dataType }) => {
   );
 };
 
-// {modalData && <div className="relative">
-// <div className="bg-gray-200 absolute inset-0 w-full h-full">Modal</div>
-// </div>}
 
 export default ResultsList;
