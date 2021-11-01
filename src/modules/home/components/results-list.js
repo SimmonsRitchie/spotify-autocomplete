@@ -22,8 +22,6 @@ const ResultsList = ({ initialHits, label, dataType }) => {
     fetchMoreHits(next, dataType, authToken, dispatch);
   };
   const displayInfo = (item) => {
-    console.log("display info:");
-    console.log(item);
     setModalData(item);
   };
 
@@ -31,7 +29,7 @@ const ResultsList = ({ initialHits, label, dataType }) => {
     return <div>Something went wrong ...</div>;
   }
   return (
-    <div className="w-full bg-blue-100 rounded p-4" >
+    <div className="w-full bg-blue-100 rounded p-4">
       <Modal modalData={modalData} setModalData={setModalData} />
       <h6 className="uppercase font-semibold mb-4">{label}</h6>
       <div className="mb-5 gap-3 grid grid-cols-1 sm:grid-cols-3">

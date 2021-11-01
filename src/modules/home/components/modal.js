@@ -1,31 +1,31 @@
 import React from "react";
+import ModalOverlay from "./modal-overlay";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 
 const Modal = ({ modalData, setModalData }) => {
   if (!modalData) {
     return null;
   }
+  console.log("modalData", modalData);
   return (
-    <div
-      className="fixed bg-opacity-40 inset-0 bg-gray-100 flex flex-col justify-center items-center z-10"
-      onClick={() => setModalData(null)}
-    >
+    <ModalOverlay setModalData={setModalData}>
       <div
-        className="bg-red-200 w-80 z-20"
+        className="bg-gray-200 w-80 z-20 p-3"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-full flex items-end justify-end">
-          <button
-            className="bg-red-800 text-white"
+        <div className="w-full flex items-end justify-end mb-2">
+          <FontAwesomeIcon
+            icon={faTimes}
+            className="text-lg text-gray-500 cursor-pointer "
             onClick={(e) => {
               setModalData(null);
             }}
-          >
-            close
-          </button>
+          />
         </div>
         Modal
       </div>
-    </div>
+    </ModalOverlay>
   );
 };
 
