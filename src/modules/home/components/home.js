@@ -3,10 +3,11 @@ import axios from "axios";
 import fetchReducer from "../reducers/fetchReducer";
 import fetchHits from "../api/fetchHits";
 import Results from "./results";
+import ScrollNav from "./scroll-nav";
 
 const Home = ({ authToken }) => {
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {
-    hits: [],
+    hits: null,
     isLoading: true,
     hasError: false,
   });
@@ -19,18 +20,24 @@ const Home = ({ authToken }) => {
     );
     return () => cancel("No longer latest query") || clearTimeout(timeOutId);
   }, [query, authToken]);
+  console.log('hits', hits)
   return (
-    <div className="w-full flex flex-col h-full gap-7 px-4 py-6 justify-center items-center">
-      <h1 className="font-bold text-2xl">Spotify Search</h1>
-      <input
-        className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-96"
-        type="text"
-        placeholder="Search for a song, artist or album"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-      />
-      {hasError && <div>Something went wrong ...</div>}
-      {isLoading ? <div>Loading results...</div> : <Results hits={hits} />}
+    <div className="w-full h-full flex justify-center items-cente bg-indigo-300 px-4 py-6">
+      <div className="w-full max-w-5xl flex flex-col gap-7 justify-center items-center">
+        <h1 className="font-bold text-gray-60 text-4xl">Tune Finder</h1>
+        <input
+          className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-96"
+          type="text"
+          placeholder="Search for a song, artist or album"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        {hits && !isLoading && <ScrollNav />}
+        <div className="w-full flex flex-col gap-7">
+          {hasError && <div>Something went wrong ...</div>}
+          {isLoading ? <div>Loading results...</div> : <Results hits={hits} />}
+        </div>
+      </div>
     </div>
   );
 };
