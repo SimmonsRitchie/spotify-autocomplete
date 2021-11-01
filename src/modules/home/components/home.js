@@ -8,7 +8,7 @@ import ScrollNav from "./scroll-nav";
 const Home = ({ authToken }) => {
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {
     hits: null,
-    isLoading: true,
+    isLoading: false,
     hasError: false,
   });
   const [query, setQuery] = useState("");
