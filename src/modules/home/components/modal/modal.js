@@ -15,8 +15,8 @@ const Modal = ({ modalData, setModalData, dataType }) => {
   console.log("modalData", modalData);
   console.log("dataType", dataType);
 
-  const itemImg = getItemImg(modalData, dataType)
-  console.log('modal itemImg',itemImg)
+  const itemImg = getItemImg(modalData, dataType);
+  console.log("modal itemImg", itemImg);
   const imgSrc = itemImg && `url(${itemImg.url})`;
   const RENDER_BODY_ENUM = {
     albums: <BodyAlbum coreData={modalData} />,
@@ -31,6 +31,7 @@ const Modal = ({ modalData, setModalData, dataType }) => {
           onClick={(e) => e.stopPropagation()}
         >
           <Top
+            dataType={dataType}
             imgSrc={imgSrc}
             title={modalData.name}
             handleCloseClick={handleCloseClick}

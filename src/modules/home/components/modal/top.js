@@ -2,7 +2,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 
-const Top = ({ imgSrc, title, handleCloseClick }) => {
+const DATA_TYPE_LABEL = {
+  "artists": "Artist",
+  "albums": "Album",
+  "tracks": "Song",
+}
+
+const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
   return (
     <div
       style={{
@@ -19,7 +25,10 @@ const Top = ({ imgSrc, title, handleCloseClick }) => {
             onClick={handleCloseClick}
           />
         </div>
-        <h3 className="text-gray-50 font-bold text-3xl">{title}</h3>
+        <div>
+          <div className="rounded shadow-sm text-sm font-bold uppercase inline-block py-1.5 px-3 mb-2 bg-purple-700 text-purple-100">{DATA_TYPE_LABEL[dataType]}</div>
+          <h3 className="text-gray-50 font-bold text-3xl">{title}</h3>
+        </div>
       </div>
     </div>
   );
