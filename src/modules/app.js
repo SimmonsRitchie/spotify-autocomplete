@@ -3,6 +3,7 @@ import { requestAuthorization } from "./home/api/auth";
 import Home from "./home";
 
 const App = () => {
+  //TODO: Handle failure to authorize
   const [authToken, setAuthToken] = useState();
 
   useEffect(() => {
@@ -10,7 +11,7 @@ const App = () => {
   }, []);
 
   if (!authToken) {
-    return <div>Authenticating...</div>;
+    return <div>Connecting to Spotify...</div>;
   }
   return <Home authToken={authToken} />;
 };
