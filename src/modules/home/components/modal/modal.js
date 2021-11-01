@@ -16,12 +16,11 @@ const Modal = ({ modalData, setModalData, dataType }) => {
   console.log("dataType", dataType);
 
   const itemImg = getItemImg(modalData, dataType);
-  console.log("modal itemImg", itemImg);
   const imgSrc = itemImg && `url(${itemImg.url})`;
   const RENDER_BODY_ENUM = {
-    albums: <BodyAlbum coreData={modalData} />,
-    artists: <BodyTrack coreData={modalData} />,
-    tracks: <div>Tracks!</div>,
+    albums: <BodyAlbum data={modalData} />,
+    artists: <div>Artists!</div>,
+    tracks: <BodyTrack data={modalData} /> ,
   };
   return (
     <Overlay setModalData={setModalData}>

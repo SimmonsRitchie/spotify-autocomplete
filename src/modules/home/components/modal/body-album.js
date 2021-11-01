@@ -1,6 +1,7 @@
 import React from "react";
 
-const BodyAlbum = ({dataType, coreData}) => {
+const BodyAlbum = ({dataType, data}) => {
+  
   return <div className="">modal</div>;
 };
 
