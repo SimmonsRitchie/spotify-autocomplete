@@ -10,8 +10,9 @@ async function fetchHits(query, authToken, dispatch, cancelToken) {
   dispatch({ type: "FETCH_START" });
   const limit = 10;
   const type = "album,artist,track";
-  const url = `https://api.spotify.com/v1/search?q=${query}&type=${type}&include_external=audio&limit=${limit}`;
-
+  const encodedQuery = encodeURIComponent(query);
+  const url = `https://api.spotify.com/v1/search?q=${encodedQuery}&type=${type}&include_external=audio&limit=${limit}`;
+  console.log('request url',url)
   try {
     const result = await axios(url, {
       cancelToken,

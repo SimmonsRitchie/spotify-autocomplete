@@ -5,7 +5,6 @@ import fetchHits from "../api/fetchHits";
 import Results from "./results";
 
 const Home = ({ authToken }) => {
-  console.log("Home authToken", authToken);
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {
     hits: [],
     isLoading: true,
@@ -22,7 +21,6 @@ const Home = ({ authToken }) => {
     );
     return () => cancel("No longer latest query") || clearTimeout(timeOutId);
   }, [query, authToken]);
-  console.log("hits", hits);
   return (
     <div className="w-full flex flex-col h-full gap-7 px-4 py-6 justify-center items-center">
       <input
