@@ -23,7 +23,7 @@ const Home = ({ authToken }) => {
     <div className="w-full flex flex-col h-full gap-7 px-4 py-6 justify-center items-center">
       <h1 className="font-bold text-2xl">Spotify Search</h1>
       <input
-        className="border rounded border-gray-800 h-12 w-full px-4 py-2 sm:w-96"
+        className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-96"
         type="text"
         placeholder="Search for a song, artist or album"
         value={query}

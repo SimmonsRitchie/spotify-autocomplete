@@ -14,7 +14,7 @@ const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
       style={{
         backgroundImage: imgSrc,
       }}
-      className="h-60 sm:h-72 relative rounded-t-md  bg-cover bg-center "
+      className="h-60 sm:h-72 relative rounded-t-md  bg-cover bg-top "
     >
       <div className="absolute inset-0 bg-black opacity-50" />
       <div className="flex flex-col absolute inset-4 justify-between">

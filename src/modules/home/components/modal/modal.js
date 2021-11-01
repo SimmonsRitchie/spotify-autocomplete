@@ -1,6 +1,7 @@
 import React from "react";
 import getItemImg from "../../api/getItemImg";
 import BodyAlbum from "./body-album";
+import BodyArtist from "./body-artist";
 import BodyTrack from "./body-track";
 import Overlay from "./overlay";
 import Top from "./top";
@@ -19,8 +20,8 @@ const Modal = ({ modalData, setModalData, dataType }) => {
   const imgSrc = itemImg && `url(${itemImg.url})`;
   const RENDER_BODY_ENUM = {
     albums: <BodyAlbum data={modalData} />,
-    artists: <div>Artists!</div>,
-    tracks: <BodyTrack data={modalData} /> ,
+    artists: <BodyArtist data={modalData} />,
+    tracks: <BodyTrack data={modalData} />,
   };
   return (
     <Overlay setModalData={setModalData}>
@@ -35,7 +36,14 @@ const Modal = ({ modalData, setModalData, dataType }) => {
             title={modalData.name}
             handleCloseClick={handleCloseClick}
           />
-          <div className="p-4">{RENDER_BODY_ENUM[dataType]}</div>
+          <div
+            style={{
+              minHeight: "7rem",
+            }}
+            className="p-4 w-full"
+          >
+            {RENDER_BODY_ENUM[dataType]}
+          </div>
         </div>
       </div>
     </Overlay>
