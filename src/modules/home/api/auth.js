@@ -30,7 +30,6 @@ var authOptions = {
   },
   json: true,
 };
-console.log("authOptions", authOptions);
 const requestAuthorization = () => {
   return request
     .post(authOptions)
