@@ -41,7 +41,7 @@ Pagination.propTypes = {
     limit: PropTypes.number,
     totalItemCount: PropTypes.number,
     itemCount: PropTypes.number,
-  }),
+  }).isRequired,
   nextPage: PropTypes.func.isRequired,
   prevPage: PropTypes.func.isRequired,
 };
