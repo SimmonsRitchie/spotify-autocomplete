@@ -40,7 +40,6 @@ const BodyArtist = ({ data }) => {
       return fetch(url, options)
         .then((r) => r.json())
         .then((data) => {
-          console.log("data", data);
           setPageData({
             nextUrl: data.next,
             prevUrl: data.previous,
@@ -62,7 +61,6 @@ const BodyArtist = ({ data }) => {
   },[data.id, fetcher])
   if (error) return <div>failed to load</div>;
   if (!albumData) return <div>Loading...</div>;
-  console.log("albumData", albumData);
 
   return (
     <div className="flex flex-col gap-2">

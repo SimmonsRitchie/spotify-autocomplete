@@ -40,7 +40,6 @@ const BodyAlbum = ({ data }) => {
       return fetch(url, options)
         .then((r) => r.json())
         .then((data) => {
-          console.log("data", data);
           setPageData({
             nextUrl: data.next,
             prevUrl: data.previous,

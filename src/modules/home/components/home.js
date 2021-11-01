@@ -4,6 +4,8 @@ import fetchReducer from "../reducers/fetchReducer";
 import fetchHits from "../api/fetchHits";
 import Results from "./results";
 import ScrollNav from "./scroll-nav";
+import Layout from "./layout";
+
 
 const Home = ({ authToken }) => {
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {
@@ -21,7 +23,7 @@ const Home = ({ authToken }) => {
     return () => cancel("No longer latest query") || clearTimeout(timeOutId);
   }, [query, authToken]);
   return (
-    <div className="w-full min-h-screen flex flex-col justify-start items-center bg-indigo-300 px-4 py-6">
+    <Layout>
       <div className="w-full max-w-5xl flex flex-col gap-7 justify-center items-center">
         <h1 className="font-bold text-gray-60 text-4xl">Tune Finder</h1>
         <input
@@ -34,7 +36,7 @@ const Home = ({ authToken }) => {
         {hits && !isLoading && <ScrollNav />}
         <Results hits={hits} isLoading={isLoading} hasError={hasError} />
       </div>
-    </div>
+    </Layout>
   );
 };
 
