@@ -1,8 +1,8 @@
 import React from "react";
 
-const ResultsItem = ({ title, img }) => {
+const ResultsItem = ({ title, img, handleClick }) => {
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-4 items-center" onClick={handleClick}>
       {img ? (
         <img className="w-12 h-12" src={img.url} alt={title} />
       ) : (

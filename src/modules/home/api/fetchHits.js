@@ -13,7 +13,7 @@ async function fetchHits(query, authToken, dispatch, cancelToken) {
   dispatch({ type: "FETCH_START" });
 
   const encodedQuery = encodeURIComponent(query);
-  const url = `https://api.spotify.com/v1/search?q=${encodedQuery}&type=${resultTypesFmt}&include_external=audio&limit=${RESULT_LIMIT}`;
+  const url = `https://api.spotify.com/v1/search?q=${encodedQuery}&type=${resultTypesFmt}&include_external=audio&limit=${RESULT_LIMIT}&market=US`;
   console.log("request url", url);
   try {
     const result = await axios(url, {
