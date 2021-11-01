@@ -1,14 +1,13 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useState } from "react";
 import ResultsItem from "./results-item";
 import fetchMoreReducer from "../reducers/fetchMoreReducer.js";
 import { AuthContext } from "../context/auth-context";
 import fetchMoreHits from "../api/fetchMoreHits";
-import { ModalContext } from "../context/modal-context";
 import Modal from "./modal";
 
 const ResultsList = ({ initialHits, label, dataType }) => {
   const { authToken } = useContext(AuthContext);
-  const { modalData, setModalData } = useContext(ModalContext);
+  const [modalData, setModalData] = useState();
 
   const [{ hits, hasError, isLoading, next }, dispatch] = useReducer(
     fetchMoreReducer,
@@ -32,8 +31,8 @@ const ResultsList = ({ initialHits, label, dataType }) => {
     return <div>Something went wrong ...</div>;
   }
   return (
-    <div className="w-full bg-blue-100 rounded p-4">
-      {modalData && <Modal />}
+    <div className="w-full bg-blue-100 rounded p-4" >
+      <Modal modalData={modalData} setModalData={setModalData} />
       <h6 className="uppercase font-semibold mb-4">{label}</h6>
       <div className="mb-5 gap-3 grid grid-cols-1 sm:grid-cols-3">
         {hits &&
