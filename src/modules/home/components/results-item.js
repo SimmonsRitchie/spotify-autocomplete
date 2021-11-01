@@ -6,7 +6,7 @@ const ResultsItem = ({ title, img, handleClick }) => {
       {img ? (
         <img className="w-12 h-12 cursor-pointer" src={img.url} alt={title} onClick={handleClick} />
       ) : (
-        <div className="w-12 h-12 bg-gray-300 cursor-pointer" onClick={handleClick} />
+        <div className="w-12 h-12 bg-gray-300 cursor-pointer flex-shrink-0" onClick={handleClick} />
       )}
       <h5 className="text-sm cursor-pointer" onClick={handleClick}>{title}</h5>
     </div>

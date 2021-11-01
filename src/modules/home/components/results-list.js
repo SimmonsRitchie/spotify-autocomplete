@@ -30,7 +30,7 @@ const ResultsList = ({ initialHits, label, dataType }) => {
   }
   return (
     <div className="w-full bg-blue-100 rounded p-4">
-      <Modal modalData={modalData} setModalData={setModalData} />
+      <Modal modalData={modalData} setModalData={setModalData} dataType={dataType} />
       <h6 className="uppercase font-semibold mb-4">{label}</h6>
       <div className="mb-5 gap-3 grid grid-cols-1 sm:grid-cols-3">
         {hits &&
