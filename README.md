@@ -22,6 +22,12 @@ Installation of this project requires Node.js and, preferably [NVM](https://gith
 
    `npm i`
 
+4. Set up a .env file.
+
+```cp .env.example .env```
+
+Add your Spotify Client ID and client secret to the file.
+
 ### Local dev
 
 To run in development mode, cd into the project folder and run:
