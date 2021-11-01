@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useEffect } from "react";
 import ResultsItem from "./results-item";
 import fetchMoreReducer from "../reducers/fetchMoreReducer.js";
 import { AuthContext } from "../context/auth-context";
@@ -21,16 +21,22 @@ const ResultsList = ({ items, label, initialNext }) => {
     fetchMoreHits(next, "artists", authToken, dispatch);
   };
 
-
   if (hasError) {
     return <div>Something went wrong ...</div>;
   }
   return (
     <div className="w-full bg-blue-100 rounded">
       <div className="uppercase font-semibold mb-4">{label}</div>
-      <ul className="mb-2">
+      <ul className="mb-2 space-y-4">
         {hits &&
-          hits.map((item) => <ResultsItem key={item.id} title={item.name} />)}
+          hits.map((item) => {
+            const {id, name, images} = item;
+            let itemImg
+            if (images && images.length > 0) {
+              itemImg = images[1] || images[0]
+            }
+            return <ResultsItem key={id} title={name} img={itemImg} />;
+          })}
       </ul>
       {next && (
         <button

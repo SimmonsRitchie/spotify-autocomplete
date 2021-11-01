@@ -1,18 +1,20 @@
 import axios from "axios";
 
+const RESULT_LIMIT = 10;
+const RESULT_TYPES = ["artist", "album", "track"];
+
 async function fetchHits(query, authToken, dispatch, cancelToken) {
   if (query === "") {
-    axios.isCancel('empty input')
+    axios.isCancel("empty input");
     dispatch({ type: "FETCH_SUCCESS", payload: [] });
-    return
+    return;
   }
-
+  const resultTypesFmt = RESULT_TYPES.join(",");
   dispatch({ type: "FETCH_START" });
-  const limit = 10;
-  const type = "album,artist,track";
+
   const encodedQuery = encodeURIComponent(query);
-  const url = `https://api.spotify.com/v1/search?q=${encodedQuery}&type=${type}&include_external=audio&limit=${limit}`;
-  console.log('request url',url)
+  const url = `https://api.spotify.com/v1/search?q=${encodedQuery}&type=${resultTypesFmt}&include_external=audio&limit=${RESULT_LIMIT}`;
+  console.log("request url", url);
   try {
     const result = await axios(url, {
       cancelToken,
@@ -20,8 +22,9 @@ async function fetchHits(query, authToken, dispatch, cancelToken) {
         Authorization: `Bearer ${authToken}`,
       },
     });
-    console.log("result from request:", result);
-    dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+    console.log("result from initial request:", result);
+    const payload = result.data;
+    dispatch({ type: "FETCH_SUCCESS", payload });
   } catch (err) {
     console.error(err);
     axios.isCancel(err) || dispatch({ type: "FETCH_FAILURE" });
