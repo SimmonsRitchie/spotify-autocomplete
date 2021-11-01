@@ -18,11 +18,12 @@ const BodyAlbum = ({ data }) => {
   };
   const trackUrl = `https://api.spotify.com/v1/albums/${data.id}/tracks?limit=5`;
   const { data: trackData, error } = useSWR(trackUrl, fetcher);
-  const releaseDate = data.release_date;
-  const fmtReleaseDate = dayjs(releaseDate).format("MMMM DD, YYYY");
+
 
   if (error) return <div>failed to load</div>;
   if (!trackData) return <div>Loading...</div>;
+  const releaseDate = data.release_date;
+  const fmtReleaseDate = dayjs(releaseDate).format("MMMM DD, YYYY");
   return (
     <div className="flex flex-col gap-2">
       <p>Released: {fmtReleaseDate}</p>

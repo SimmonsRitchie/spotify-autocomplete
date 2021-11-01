@@ -7,8 +7,6 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight
 const Pagination = ({ data, nextPage, prevPage }) => {
   const { totalItemCount, itemCount, prevUrl, nextUrl, offset } = data;
   const disabledStyles = "opacity-30";
-  console.log("pagination data", data);
-
   const itemsEnd = offset + itemCount;
   return (
     <div className="flex gap-4 justify-end w-full">

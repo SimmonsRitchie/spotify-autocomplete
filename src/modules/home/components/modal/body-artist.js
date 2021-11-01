@@ -18,20 +18,14 @@ const BodyArtist = ({ data }) => {
 
   const nextPage = () => {
     if (!pageData.nextUrl) {
-      console.log('no next url!')
       return
     }
-    console.log("next!");
-    console.log(pageData.nextUrl);
     fetcher(pageData.nextUrl);
   };
   const prevPage = () => {
     if (!pageData.prevUrl) {
-      console.log('no prev url!')
       return
     }
-    console.log("prev!");
-    console.log(pageData.prevUrl);
     fetcher(pageData.prevUrl);
   };
 
