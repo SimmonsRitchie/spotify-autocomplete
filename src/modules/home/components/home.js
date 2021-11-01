@@ -23,6 +23,7 @@ const Home = ({ authToken }) => {
   }, [query, authToken]);
   return (
     <div className="w-full flex flex-col h-full gap-7 px-4 py-6 justify-center items-center">
+    <h1 className="font-bold text-2xl">Spotify Search</h1>
       <input
         className="border rounded border-gray-800"
         type="text"

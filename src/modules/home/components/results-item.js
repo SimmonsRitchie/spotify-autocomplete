@@ -1,7 +1,6 @@
 import React from "react";
 
 const ResultsItem = ({ title, img }) => {
-  console.log("img", img);
   return (
     <li>
       <div className="flex w-full gap-4 items-center">

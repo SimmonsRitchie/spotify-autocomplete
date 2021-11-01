@@ -8,6 +8,7 @@ async function fetchMoreHits(url, dataType, authToken, dispatch) {
         Authorization: `Bearer ${authToken}`,
       },
     });
+    console.log('fetchMoreHits results', result)
     const refinedResults = result.data[dataType].items
     const nextPage = result.data[dataType].next
     dispatch({ type: "FETCH_SUCCESS", 

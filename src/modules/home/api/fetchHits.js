@@ -22,7 +22,6 @@ async function fetchHits(query, authToken, dispatch, cancelToken) {
         Authorization: `Bearer ${authToken}`,
       },
     });
-    console.log("result from initial request:", result);
     const payload = result.data;
     dispatch({ type: "FETCH_SUCCESS", payload });
   } catch (err) {
