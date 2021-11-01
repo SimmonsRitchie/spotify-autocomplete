@@ -29,9 +29,9 @@ const BodyAlbum = ({ data }) => {
       <div>
         <p className="mb-2 uppercase font-semibold text-sm">Tracks:</p>
         <ul className="space-y-1 list-decimal	 list-inside">
-          {trackData.items.map(({name, duration_ms: durationMS}) => {
+          {trackData.items.map(({id, name, duration_ms: durationMS}) => {
             const durationMin = msToMin(durationMS)
-            return <li className="text-sm truncate">{name} <span className="text-gray-500">({durationMin})</span></li>
+            return <li key={id} className="text-sm truncate">{name} <span className="text-gray-500">({durationMin})</span></li>
           })}
         </ul>
       </div>
