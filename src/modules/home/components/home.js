@@ -20,9 +20,8 @@ const Home = ({ authToken }) => {
     );
     return () => cancel("No longer latest query") || clearTimeout(timeOutId);
   }, [query, authToken]);
-  console.log('hits', hits)
   return (
-    <div className="w-full h-full flex justify-center items-cente bg-indigo-300 px-4 py-6">
+    <div className="w-full min-h-screen flex flex-col justify-start items-center bg-indigo-300 px-4 py-6">
       <div className="w-full max-w-5xl flex flex-col gap-7 justify-center items-center">
         <h1 className="font-bold text-gray-60 text-4xl">Tune Finder</h1>
         <input
@@ -33,10 +32,7 @@ const Home = ({ authToken }) => {
           onChange={(event) => setQuery(event.target.value)}
         />
         {hits && !isLoading && <ScrollNav />}
-        <div className="w-full flex flex-col gap-7">
-          {hasError && <div>Something went wrong ...</div>}
-          {isLoading ? <div>Loading results...</div> : <Results hits={hits} />}
-        </div>
+        <Results hits={hits} isLoading={isLoading} hasError={hasError} />
       </div>
     </div>
   );
