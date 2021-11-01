@@ -13,9 +13,6 @@ const Modal = ({ modalData, setModalData, dataType }) => {
   const handleCloseClick = () => {
     setModalData(null);
   };
-  console.log("modalData", modalData);
-  console.log("dataType", dataType);
-
   const itemImg = getItemImg(modalData, dataType);
   const imgSrc = itemImg && `url(${itemImg.url})`;
   const RENDER_BODY_ENUM = {
