@@ -6,10 +6,6 @@ const Results = ({ hits }) => {
     return <div>No results</div>;
   }
   console.log("results:", hits);
-  //TODO: add pagination
-  //TODO: add albums, tracks
-  //TODO: display each item as specifications require
-  //TODO: open a sidebar or modal to display meta information
   return (
     <div className="w-full flex flex-col gap-7">
       <ResultsList
