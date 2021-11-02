@@ -1,6 +1,6 @@
-# Spotify search
+# Spotify autocomplete search
 
-A React app to search for artist, albums, and tracks using Spotify's API.
+A React app to search for artist, albums, and tracks powered by [Spotify's Web API](https://developer.spotify.com/documentation/web-api/).
 
 ## Getting started
 
