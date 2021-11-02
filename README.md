@@ -28,7 +28,7 @@ Installation of this project requires Node.js and, preferably [NVM](https://gith
 
 ```cp .env.example .env```
 
-Add your Spotify Client ID and Client Secret to "REACT_APP_CLIENT_ID" and "REACT_APP_CLIENT_SECRET".
+Add your Spotify Client ID and Client Secret to REACT_APP_CLIENT_ID and REACT_APP_CLIENT_SECRET.
 
 ### Local dev
 
