@@ -56,7 +56,7 @@ const BodyArtist = ({ data }) => {
   )
 
   useEffect(() => {
-    const albumsUrl = `https://api.spotify.com/v1/artists/${data.id}/albums?limit=4`;
+    const albumsUrl = `https://api.spotify.com/v1/artists/${data.id}/albums?limit=5`;
     fetcher(albumsUrl);
 
   },[data.id, fetcher])
@@ -67,20 +67,20 @@ const BodyArtist = ({ data }) => {
     <div className="flex flex-col h-full justify-between">
         <div className="flex flex-col">
           <p className="mb-3 text-base text-gray-600 font-semibold">Albums</p>
-          <div className="grid grid-cols-1 gap-2">
+          <div className="grid grid-cols-1 gap-1.5">
             {albumData.items.map((item) => {
               const { id, name } = item;
-              const img = getItemImg(item);
+              const img = getItemImg(item, "artist", "small");
               return (
                 <div key={id} className="flex gap-3 items-center">
                   {img ? (
                     <img
                       src={img.url}
                       alt={`Cover for ${name}`}
-                      className="w-8 h-8"
+                      className="w-6 h-6"
                     />
                   ) : (
-                    <div className="flex-shrink-0 w-8 h-8 bg-gray-500" />
+                    <div className="flex-shrink-0 w-6 h-6 bg-gray-500" />
                   )}
                   <div className="text-sm truncate">{name}</div>
                 </div>
