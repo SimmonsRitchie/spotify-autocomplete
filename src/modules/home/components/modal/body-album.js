@@ -64,22 +64,25 @@ const BodyAlbum = ({ data }) => {
   const releaseDate = data.release_date;
   const fmtReleaseDate = dayjs(releaseDate).format("MMMM DD, YYYY");
   return (
-    <div className="flex flex-col gap-2">
-      <p>Released: {fmtReleaseDate}</p>
-      <div>
-        <p className="mb-2 uppercase font-semibold text-sm">Tracks:</p>
-        <ul className="space-y-1 list-decimal	 list-inside">
-          {tracksData.items.map(({ id, name, duration_ms: durationMS }) => {
-            const durationMin = msToMin(durationMS);
-            return (
-              <li key={id} className="text-sm truncate">
-                {name} <span className="text-gray-500">({durationMin})</span>
-              </li>
-            );
-          })}
-        </ul>
-        <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
+    <div className="w-full h-full flex flex-col justify-between">
+      <div className="flex flex-col gap-4  text-sm" >
+        <p className="text-gray-500">Released {fmtReleaseDate}</p>
+        <div>
+          <p className="mb-2 uppercase font-semibold">Tracks:</p>
+          <ul className="space-y-1 list-decimal	 list-inside">
+            {tracksData.items.map(({ id, name, duration_ms: durationMS }) => {
+              const durationMin = msToMin(durationMS);
+              return (
+                <li key={id} className="text-sm truncate">
+                  {name} <span className="text-gray-500">({durationMin})</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
+      <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
+
     </div>
   );
 };

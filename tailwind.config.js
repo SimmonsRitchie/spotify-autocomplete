@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         serif: ["PT Serif", "sans-serif"],
         sans: ["Open Sans", "helvetica neue"],
+        maven: ["Maven Pro", "sans-serif"],
       },
     },
     variants: {

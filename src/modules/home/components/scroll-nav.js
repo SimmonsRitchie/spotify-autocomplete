@@ -1,23 +1,20 @@
 import React from "react";
+import { DATATYPE_STYLES_LOOKUP } from "../api/contants";
 import { scrollToTarget } from "../api/scrollToTarget";
 
-const BUTTONS = [
-  { label: "Songs", href: "#tracks" },
-  { label: "Albums", href: "#albums" },
-  { label: "Artists", href: "#artists" },
-];
 
 const ScrollNav = () => {
   return (
-    <div className="flex gap-4">
-      {BUTTONS.map(({label, href}, index) => {
+    <div className="flex gap-6">
+      {Object.keys(DATATYPE_STYLES_LOOKUP).map((key) => {
+        const { buttonDark, labelPlural } = DATATYPE_STYLES_LOOKUP[key];
         return (
           <button
-            onClick={() => scrollToTarget(href)}
-            key={label}
-            className="rounded font-semibold text-white text-xs rounded-r-full rounded-l-full bg-purple-600 px-3 py-1"
+            onClick={() => scrollToTarget(`#${key}`)}
+            key={key}
+            className={`shadow text-sm font-maven font-semibold text-gray-50 rounded-r-full rounded-l-full w-20 py-2 ${buttonDark}`}
           >
-            {label}
+            {labelPlural}
           </button>
         );
       })}

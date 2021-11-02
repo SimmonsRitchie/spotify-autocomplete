@@ -1,14 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-
-const DATA_TYPE_LABEL = {
-  "artists": "Artist",
-  "albums": "Album",
-  "tracks": "Song",
-}
+import { DATATYPE_STYLES_LOOKUP } from "../../api/contants";
 
 const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
+  const { labelSingular, buttonDark } = DATATYPE_STYLES_LOOKUP[dataType];
   return (
     <div
       style={{
@@ -26,7 +22,7 @@ const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
           />
         </div>
         <div>
-          <div className="rounded shadow-sm text-sm font-bold uppercase inline-block py-1.5 px-3 mb-2 bg-purple-700 text-purple-100">{DATA_TYPE_LABEL[dataType]}</div>
+          <div className={`rounded shadow-sm text-xs font-bold uppercase inline-block py-1 px-3 mb-2 ${buttonDark}`}>{labelSingular}</div>
           <h3 className="text-gray-50 font-bold text-3xl">{title}</h3>
         </div>
       </div>

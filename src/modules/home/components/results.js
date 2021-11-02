@@ -1,10 +1,11 @@
 import React from "react";
+import ErrorMsg from "./error-msg";
 import ResultsList from "./results-list";
 import ResultsSkeleton from "./results-skeleton";
 
 const Results = ({ hits, hasError, isLoading, query }) => {
   if (hasError) {
-    return <p>Something went wrong.</p>;
+    return <ErrorMsg />;
   }
   if (isLoading) {
     return <ResultsSkeleton />;
@@ -14,9 +15,9 @@ const Results = ({ hits, hasError, isLoading, query }) => {
   }
   return (
     <div className="w-full flex flex-col gap-7">
-      <ResultsList initialHits={hits} label="Artists" dataType={"artists"} />
-      <ResultsList initialHits={hits} label="Albums" dataType={"albums"} />
-      <ResultsList initialHits={hits} label="Tracks" dataType={"tracks"} />
+      <ResultsList initialHits={hits}  dataType={"artists"} />
+      <ResultsList initialHits={hits}  dataType={"albums"} />
+      <ResultsList initialHits={hits}  dataType={"tracks"} />
     </div>
   );
 };

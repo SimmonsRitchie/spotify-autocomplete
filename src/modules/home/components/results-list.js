@@ -5,8 +5,10 @@ import { AuthContext } from "../context/auth-context";
 import fetchMoreHits from "../api/fetchMoreHits";
 import Modal from "./modal";
 import getItemImg from "../api/getItemImg";
+import ErrorMsg from "./error-msg";
+import ResultsListContainer from "./results-list-container";
 
-const ResultsList = ({ initialHits, label, dataType }) => {
+const ResultsList = ({ initialHits, dataType }) => {
   const { authToken } = useContext(AuthContext);
   const [modalData, setModalData] = useState();
 
@@ -27,17 +29,28 @@ const ResultsList = ({ initialHits, label, dataType }) => {
   };
 
   if (hasError) {
-    return <div>Something went wrong ...</div>;
+    return (
+      <ResultsListContainer dataType={dataType}>
+        <ErrorMsg />
+      </ResultsListContainer>
+    );
   }
+
+  if (hits.length === 0) {
+    return (
+      <ResultsListContainer dataType={dataType} >
+       <span className="text-gray-500">No results found</span>
+      </ResultsListContainer>
+    )
+  }
+
   return (
-    <div id={dataType} className="w-full bg-blue-100 rounded p-4">
-      <Modal modalData={modalData} setModalData={setModalData} dataType={dataType} />
-      <h6 className="uppercase font-semibold mb-4">{label}</h6>
+    <ResultsListContainer dataType={dataType} >
       <div className="mb-5 gap-3 grid grid-cols-1 sm:grid-cols-3">
         {hits &&
           hits.map((item, idx) => {
             const { id, name } = item;
-            const itemImg = getItemImg(item, dataType)
+            const itemImg = getItemImg(item, dataType);
             return (
               <ResultsItem
                 // use index in key to handle occasions where the same item is
@@ -51,16 +64,22 @@ const ResultsList = ({ initialHits, label, dataType }) => {
           })}
       </div>
       {next && (
-        <button
-          className="bg-blue-800 text-white font-semibold text-sm px-3 py-1.5 rounded uppercase "
-          onClick={loadMore}
-        >
-          {isLoading ? "loading..." : "More results"}
-        </button>
+        <div className="w-full flex justify-center mt-10">
+          <button
+            className="bg-red-500 text-gray-50 font-semibold text-sm px-8 py-2 rounded-r-full rounded-l-full uppercase "
+            onClick={loadMore}
+          >
+            {isLoading ? "loading..." : "More results"}
+          </button>
+        </div>
       )}
-    </div>
+      <Modal
+      modalData={modalData}
+      setModalData={setModalData}
+      dataType={dataType}
+    />
+    </ResultsListContainer>
   );
 };
-
 
 export default ResultsList;

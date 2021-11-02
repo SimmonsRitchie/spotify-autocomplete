@@ -35,7 +35,7 @@ const Modal = ({ modalData, setModalData, dataType }) => {
           />
           <div
             style={{
-              minHeight: "7rem",
+              height: "250px",
             }}
             className="p-4 w-full"
           >

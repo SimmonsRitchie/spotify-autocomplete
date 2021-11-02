@@ -5,8 +5,15 @@ import fetchHits from "../api/fetchHits";
 import Results from "./results";
 import ScrollNav from "./scroll-nav";
 import Layout from "./layout";
+import Hed from "./hed";
 
-
+const Special = ({ children }) => {
+  return (
+    <span className="text-transparent bg-clip-text bg-gradient-to-b  from-white to-gray-300">
+      {children}
+    </span>
+  );
+};
 const Home = ({ authToken }) => {
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {
     hits: null,
@@ -24,16 +31,18 @@ const Home = ({ authToken }) => {
   }, [query, authToken]);
   return (
     <Layout>
-      <div className="w-full max-w-5xl flex flex-col gap-7 justify-center items-center">
-        <h1 className="font-bold text-gray-60 text-4xl">Tune Finder</h1>
-        <input
-          className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-96"
-          type="text"
-          placeholder="Search for a song, artist or album"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-        />
-        {hits && !isLoading && <ScrollNav />}
+      <div className="w-full max-w-5xl flex flex-col gap-12 justify-center items-center">
+        <Hed />
+        <div className="flex flex-col items-center gap-7">
+          <input
+            className="shadow appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-96"
+            type="text"
+            placeholder="Search for a song, artist or album"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          {hits && !isLoading && !hasError && <ScrollNav />}
+        </div>
         <Results hits={hits} isLoading={isLoading} hasError={hasError} />
       </div>
     </Layout>

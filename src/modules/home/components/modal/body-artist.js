@@ -63,32 +63,32 @@ const BodyArtist = ({ data }) => {
   if (!albumData) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col gap-2">
-      <div>
-        <p className="mb-3 text-sm font-semibold uppercase">Albums:</p>
-        <div className="grid grid-cols-1 gap-2">
-          {albumData.items.map((item) => {
-            const { id, name } = item;
-            const img = getItemImg(item);
-            return (
-              <div key={id} className="flex gap-2">
-                {img ? (
-                  <img
-                    src={img.url}
-                    alt={`Cover for ${name}`}
-                    className="w-8 h-8"
-                  />
-                ) : (
-                  <div className="flex-shrink-0 w-8 h-8 bg-gray-500" />
-                )}
-
-                <div className="text-sm truncate">{name}</div>
-              </div>
-            );
-          })}
-          <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
+    <div className="flex flex-col h-full justify-between">
+        <div className="flex flex-col">
+          <p className="mb-3 text-base text-gray-600 font-semibold">Albums</p>
+          <div className="grid grid-cols-1 gap-2">
+            {albumData.items.map((item) => {
+              const { id, name } = item;
+              const img = getItemImg(item);
+              return (
+                <div key={id} className="flex gap-3 items-center">
+                  {img ? (
+                    <img
+                      src={img.url}
+                      alt={`Cover for ${name}`}
+                      className="w-8 h-8"
+                    />
+                  ) : (
+                    <div className="flex-shrink-0 w-8 h-8 bg-gray-500" />
+                  )}
+                  <div className="text-sm truncate">{name}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
+        <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
+
     </div>
   );
 };
