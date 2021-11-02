@@ -22,7 +22,7 @@ const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
           />
         </div>
         <div>
-          <div className={`rounded shadow-sm text-xs font-bold uppercase inline-block py-1 px-3 mb-2 ${buttonDark}`}>{labelSingular}</div>
+          <div className={`rounded shadow-sm text-xs font-bold uppercase inline-block py-1 px-3 mb-2 text-gray-900 ${buttonDark}`}>{labelSingular}</div>
           <h3 className="text-gray-50 font-bold text-3xl">{title}</h3>
         </div>
       </div>
