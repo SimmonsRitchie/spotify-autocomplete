@@ -3,6 +3,8 @@ import dayjs from "dayjs";
 import { AuthContext } from "../../context/auth-context";
 import msToMin from "../../api/msToMin";
 import Pagination from "./pagination";
+import Skeleton from "react-loading-skeleton";
+
 
 const BodyAlbum = ({ data }) => {
   const { authToken } = useContext(AuthContext);
@@ -59,8 +61,17 @@ const BodyAlbum = ({ data }) => {
     const tracksUrl = `https://api.spotify.com/v1/albums/${data.id}/tracks?limit=5`;
     fetcher(tracksUrl);
   }, [data.id, fetcher]);
-  if (error) return <div>failed to load</div>;
-  if (!tracksData) return <div>Loading...</div>;
+
+  if (error) return <div>Sorry! Something went wrong</div>;
+  if (!tracksData) return (
+    <React.Fragment>
+    <Skeleton count={1} className="mb-4" width={220} baseColor={"#D1D5DB"} />
+    <Skeleton count={4} width={190} baseColor={"#D1D5DB"} />
+
+    </React.Fragment>
+    );
+
+  
   const releaseDate = data.release_date;
   const fmtReleaseDate = dayjs(releaseDate).format("MMMM DD, YYYY");
   return (

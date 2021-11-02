@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, useCallback } from "react";
 import { AuthContext } from "../../context/auth-context";
 import getItemImg from "../../api/getItemImg";
 import Pagination from "./pagination";
+import Skeleton from "react-loading-skeleton";
 
 const BodyArtist = ({ data }) => {
   const { authToken } = useContext(AuthContext);
@@ -59,8 +60,8 @@ const BodyArtist = ({ data }) => {
     fetcher(albumsUrl);
 
   },[data.id, fetcher])
-  if (error) return <div>failed to load</div>;
-  if (!albumData) return <div>Loading...</div>;
+  if (error) return <div>Sorry! Something went wrong</div>;
+  if (!albumData) return <Skeleton count={7} width={190} baseColor={"#D1D5DB"} />;
 
   return (
     <div className="flex flex-col h-full justify-between">
