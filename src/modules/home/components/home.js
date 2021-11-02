@@ -7,13 +7,7 @@ import ScrollNav from "./scroll-nav";
 import Layout from "./layout";
 import Hed from "./hed";
 
-const Special = ({ children }) => {
-  return (
-    <span className="text-transparent bg-clip-text bg-gradient-to-b  from-white to-gray-300">
-      {children}
-    </span>
-  );
-};
+
 const Home = ({ authToken }) => {
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {
     hits: null,
