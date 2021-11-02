@@ -26,7 +26,7 @@ Installation of this project requires Node.js and, preferably [NVM](https://gith
 
 5. Set up a .env file using the .env template provided in this repo.
 
-`cp .env.example .env`
+   `cp .env.example .env`
 
 Set your Spotify Client ID and Client Secret to the REACT_APP_CLIENT_ID and REACT_APP_CLIENT_SECRET variables.
 
