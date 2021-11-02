@@ -11,8 +11,10 @@ const fetchMoreReducer = (state, action) => {
         ...state,
         isLoading: false,
         hasError: false,
-        hits: action.payload ? [...state.hits, ...action.payload.hits] : [...state.hits],
-        next: action.payload.next
+        hits: action.payload
+          ? [...state.hits, ...action.payload.hits]
+          : [...state.hits],
+        next: action.payload.next,
       };
     case "FETCH_FAILURE":
       return {
@@ -26,4 +28,4 @@ const fetchMoreReducer = (state, action) => {
   }
 };
 
-export default fetchMoreReducer
+export default fetchMoreReducer;

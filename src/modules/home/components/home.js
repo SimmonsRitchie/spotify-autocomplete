@@ -6,7 +6,7 @@ import Results from "./results";
 import ScrollNav from "./scroll-nav";
 import Layout from "./layout";
 import Hed from "./hed";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const Home = ({ authToken }) => {
   const [{ hits, hasError, isLoading }, dispatch] = useReducer(fetchReducer, {

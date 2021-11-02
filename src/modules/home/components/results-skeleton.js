@@ -15,14 +15,7 @@ const ResultsSkeleton = () => {
           width={80}
           borderRadius={"1.25rem"}
         />
-            <Skeleton
-              reactangle
-              height={400}
-              count={3}
-              className="mb-4"
-
-            />
-
+        <Skeleton reactangle height={400} count={3} className="mb-4" />
       </section>
     </SkeletonTheme>
   );

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { AuthContext } from "../../context/auth-context";
 import getItemImg from "../../api/getItemImg";
 import Pagination from "./pagination";
@@ -20,13 +20,13 @@ const BodyArtist = ({ data }) => {
 
   const nextPage = () => {
     if (!pageData.nextUrl) {
-      return
+      return;
     }
     fetcher(pageData.nextUrl);
   };
   const prevPage = () => {
     if (!pageData.prevUrl) {
-      return
+      return;
     }
     fetcher(pageData.prevUrl);
   };
@@ -50,47 +50,47 @@ const BodyArtist = ({ data }) => {
             totalItemCount: fetchedData.total,
             itemCount: fetchedData.items.length,
           });
-          setAlbumData(fetchedData)
+          setAlbumData(fetchedData);
         })
-        .catch((err) => setError(err));    },
-    [authToken],
-  )
+        .catch((err) => setError(err));
+    },
+    [authToken]
+  );
 
   useEffect(() => {
     const albumsUrl = `https://api.spotify.com/v1/artists/${data.id}/albums?limit=5`;
     fetcher(albumsUrl);
-
-  },[data.id, fetcher])
+  }, [data.id, fetcher]);
   if (error) return <div>Sorry! Something went wrong</div>;
-  if (!albumData) return <Skeleton count={7} width={190} baseColor={"#D1D5DB"} />;
+  if (!albumData)
+    return <Skeleton count={7} width={190} baseColor={"#D1D5DB"} />;
 
   return (
     <div className="flex flex-col h-full justify-between">
-        <div className="flex flex-col">
-          <p className="mb-3 text-base text-gray-600 font-semibold">Albums</p>
-          <div className="grid grid-cols-1 gap-1.5">
-            {albumData.items.map((item) => {
-              const { id, name } = item;
-              const img = getItemImg(item, "artist", "small");
-              return (
-                <div key={id} className="flex gap-3 items-center">
-                  {img ? (
-                    <img
-                      src={img.url}
-                      alt={`Cover for ${name}`}
-                      className="w-6 h-6"
-                    />
-                  ) : (
-                    <div className="flex-shrink-0 w-6 h-6 bg-gray-500" />
-                  )}
-                  <div className="text-sm truncate">{name}</div>
-                </div>
-              );
-            })}
-          </div>
+      <div className="flex flex-col">
+        <p className="mb-3 text-base text-gray-600 font-semibold">Albums</p>
+        <div className="grid grid-cols-1 gap-1.5">
+          {albumData.items.map((item) => {
+            const { id, name } = item;
+            const img = getItemImg(item, "artist", "small");
+            return (
+              <div key={id} className="flex gap-3 items-center">
+                {img ? (
+                  <img
+                    src={img.url}
+                    alt={`Cover for ${name}`}
+                    className="w-6 h-6"
+                  />
+                ) : (
+                  <div className="flex-shrink-0 w-6 h-6 bg-gray-500" />
+                )}
+                <div className="text-sm truncate">{name}</div>
+              </div>
+            );
+          })}
         </div>
-        <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
-
+      </div>
+      <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
     </div>
   );
 };
@@ -98,6 +98,6 @@ const BodyArtist = ({ data }) => {
 BodyArtist.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.string.isRequired,
-  }).isRequired
-}
+  }).isRequired,
+};
 export default BodyArtist;

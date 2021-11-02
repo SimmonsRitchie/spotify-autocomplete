@@ -3,10 +3,14 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID; // Your client id
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET; // Your secret
 
 if (typeof CLIENT_ID === "undefined") {
-  throw new Error("REACT_APP_CLIENT_ID is undefined. Make sure it's set in .env");
+  throw new Error(
+    "REACT_APP_CLIENT_ID is undefined. Make sure it's set in .env"
+  );
 }
 if (typeof CLIENT_SECRET === "undefined") {
-  throw new Error("REACT_APP_CLIENT_SECRET is undefined. Make sure it's set in .env");
+  throw new Error(
+    "REACT_APP_CLIENT_SECRET is undefined. Make sure it's set in .env"
+  );
 }
 
 // your application requests authorization
@@ -22,8 +26,7 @@ var authOptions = {
   json: true,
 };
 const requestAuthorization = () => {
-  return request
-    .post(authOptions)
+  return request.post(authOptions);
 };
 
 module.exports = {

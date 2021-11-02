@@ -1,11 +1,10 @@
 import React, { useContext, useCallback, useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import { AuthContext } from "../../context/auth-context";
 import msToMin from "../../api/msToMin";
 import Pagination from "./pagination";
 import Skeleton from "react-loading-skeleton";
-
 
 const BodyAlbum = ({ data }) => {
   const { authToken } = useContext(AuthContext);
@@ -64,11 +63,17 @@ const BodyAlbum = ({ data }) => {
   }, [data.id, fetcher]);
 
   if (error) return <div>Sorry! Something went wrong</div>;
-  if (!tracksData) return (
-    <React.Fragment>
-    <Skeleton count={1} className="mb-4" width={220} baseColor={"#D1D5DB"} />
-    <Skeleton count={4} width={190} baseColor={"#D1D5DB"} />
-    </React.Fragment>
+  if (!tracksData)
+    return (
+      <React.Fragment>
+        <Skeleton
+          count={1}
+          className="mb-4"
+          width={220}
+          baseColor={"#D1D5DB"}
+        />
+        <Skeleton count={4} width={190} baseColor={"#D1D5DB"} />
+      </React.Fragment>
     );
   const artists = tracksData.items.map((item) => item.artists[0].name);
   const uniqueArtists = [...new Set(artists)];
@@ -77,7 +82,7 @@ const BodyAlbum = ({ data }) => {
   const fmtReleaseDate = dayjs(releaseDate).format("MMMM DD, YYYY");
   return (
     <div className="w-full h-full flex flex-col justify-between">
-      <div className="flex flex-col gap-3  text-sm" >
+      <div className="flex flex-col gap-3  text-sm">
         <div>
           <p className="text-gray-500 mb-0.5 truncate">By {fmtArtists}</p>
           <p className="text-gray-500">Released {fmtReleaseDate}</p>
@@ -97,7 +102,6 @@ const BodyAlbum = ({ data }) => {
         </div>
       </div>
       <Pagination data={pageData} nextPage={nextPage} prevPage={prevPage} />
-
     </div>
   );
 };
@@ -106,7 +110,7 @@ BodyAlbum.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.string.isRequired,
     release_date: PropTypes.string,
-  }).isRequired
-}
+  }).isRequired,
+};
 
 export default BodyAlbum;

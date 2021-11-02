@@ -1,7 +1,7 @@
-import React, { createContext } from 'react'
-import PropTypes from 'prop-types'
+import React, { createContext } from "react";
+import PropTypes from "prop-types";
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children, authToken }) => {
   return (
@@ -12,12 +12,12 @@ const AuthContextProvider = ({ children, authToken }) => {
     >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
 AuthContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
   authToken: PropTypes.string.isRequired,
-}
+};
 
-export default AuthContextProvider
+export default AuthContextProvider;

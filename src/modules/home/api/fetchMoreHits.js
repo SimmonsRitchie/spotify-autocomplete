@@ -8,13 +8,15 @@ async function fetchMoreHits(url, dataType, authToken, dispatch) {
         Authorization: `Bearer ${authToken}`,
       },
     });
-    const refinedResults = result.data[dataType].items
-    const nextPage = result.data[dataType].next
-    dispatch({ type: "FETCH_SUCCESS", 
-    payload: {
-      hits: refinedResults,
-      next: nextPage,
-    } });
+    const refinedResults = result.data[dataType].items;
+    const nextPage = result.data[dataType].next;
+    dispatch({
+      type: "FETCH_SUCCESS",
+      payload: {
+        hits: refinedResults,
+        next: nextPage,
+      },
+    });
   } catch (err) {
     console.error(err);
     dispatch({ type: "FETCH_FAILURE" });

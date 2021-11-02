@@ -1,5 +1,5 @@
 import React, { useReducer, useContext, useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import ResultsItem from "./results-item";
 import fetchMoreReducer from "../reducers/fetchMoreReducer.js";
 import { AuthContext } from "../context/auth-context";
@@ -8,7 +8,6 @@ import Modal from "./modal";
 import getItemImg from "../api/getItemImg";
 import ErrorMsg from "./error-msg";
 import ResultsListContainer from "./results-list-container";
-
 
 const ResultsList = ({ initialHits, dataType }) => {
   const { authToken } = useContext(AuthContext);
@@ -40,14 +39,14 @@ const ResultsList = ({ initialHits, dataType }) => {
 
   if (hits.length === 0) {
     return (
-      <ResultsListContainer dataType={dataType} >
-       <span className="text-gray-500">No results found</span>
+      <ResultsListContainer dataType={dataType}>
+        <span className="text-gray-500">No results found</span>
       </ResultsListContainer>
-    )
+    );
   }
 
   return (
-    <ResultsListContainer dataType={dataType} >
+    <ResultsListContainer dataType={dataType}>
       <div className="mb-5 gap-3 grid grid-cols-1 sm:grid-cols-3">
         {hits &&
           hits.map((item, idx) => {
@@ -76,10 +75,10 @@ const ResultsList = ({ initialHits, dataType }) => {
         </div>
       )}
       <Modal
-      modalData={modalData}
-      setModalData={setModalData}
-      dataType={dataType}
-    />
+        modalData={modalData}
+        setModalData={setModalData}
+        dataType={dataType}
+      />
     </ResultsListContainer>
   );
 };
@@ -88,9 +87,9 @@ ResultsList.propTypes = {
   initialHits: PropTypes.shape({
     artists: PropTypes.objectOf(PropTypes.any),
     albums: PropTypes.objectOf(PropTypes.any),
-    tracks: PropTypes.objectOf(PropTypes.any)
+    tracks: PropTypes.objectOf(PropTypes.any),
   }),
-  dataType: PropTypes.string.isRequired
-}
+  dataType: PropTypes.string.isRequired,
+};
 
 export default ResultsList;

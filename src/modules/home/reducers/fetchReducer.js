@@ -24,4 +24,4 @@ const fetchReducer = (state, action) => {
   }
 };
 
-export default fetchReducer
+export default fetchReducer;

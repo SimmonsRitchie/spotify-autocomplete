@@ -12,18 +12,18 @@ export const scrollToTarget = (
    *
    * @return {void}
    * */
-  const targetEl = document.querySelector(elSelector)
+  const targetEl = document.querySelector(elSelector);
   if (!targetEl) {
-    throw new Error(`No element with selector "${elSelector}" found in DOM`)
+    throw new Error(`No element with selector "${elSelector}" found in DOM`);
   }
-  const scrollPos = document.querySelector(elSelector).offsetTop - offset
+  const scrollPos = document.querySelector(elSelector).offsetTop - offset;
   if (animate) {
     window.scroll({
       left: 0,
       top: scrollPos,
-      behavior: 'smooth',
-    })
-    return
+      behavior: "smooth",
+    });
+    return;
   }
-  window.scrollTo(0, scrollPos)
-}
+  window.scrollTo(0, scrollPos);
+};

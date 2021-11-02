@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import getItemImg from "../../api/getItemImg";
 import BodyAlbum from "./body-album";
 import BodyArtist from "./body-artist";
@@ -52,6 +52,6 @@ Modal.propTypes = {
   modalData: PropTypes.object,
   setModalData: PropTypes.func,
   dataType: PropTypes.string,
-}
+};
 
 export default Modal;
