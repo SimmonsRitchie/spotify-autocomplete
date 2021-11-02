@@ -50,7 +50,7 @@ const ResultsList = ({ initialHits, dataType }) => {
         {hits &&
           hits.map((item, idx) => {
             const { id, name } = item;
-            const itemImg = getItemImg(item, dataType);
+            const itemImg = getItemImg(item, dataType, "small");
             return (
               <ResultsItem
                 // use index in key to handle occasions where the same item is
