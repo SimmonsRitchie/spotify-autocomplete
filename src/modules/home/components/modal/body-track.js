@@ -1,13 +1,14 @@
 import React from "react";
 import dayjs from "dayjs";
 import msToMin from "../../api/msToMin";
+import PropTypes from "prop-types";
 
 const BodyTrack = ({ data }) => {
   const { album } = data;
   const durationMin = msToMin(data.duration_ms);
   const fromAlbum = album.name;
   const albumReleaseData = album.release_date;
-  const fmtAlbumReleaseDate = dayjs(albumReleaseData).format("MMMM DD, YYYY")
+  const fmtAlbumReleaseDate = dayjs(albumReleaseData).format("MMMM DD, YYYY");
   const artistList = album.artists.map((artist) => artist.name);
   const fmtArtists = artistList.join(", ");
   const ITEMS = [
@@ -31,6 +32,18 @@ const BodyTrack = ({ data }) => {
       </div>
     </div>
   );
+};
+
+BodyTrack.propTypes = {
+  data: PropTypes.shape({
+    album: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      total_tracks: PropTypes.number.isRequired,
+      artists: PropTypes.arrayOf(PropTypes.any).isRequired,
+    }),
+    duration_ms: PropTypes.number,
+  }).isRequired,
 };
 
 export default BodyTrack;

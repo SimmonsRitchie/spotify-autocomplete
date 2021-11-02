@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
+import PropTypes from 'prop-types';
 import { AuthContext } from "../../context/auth-context";
 import getItemImg from "../../api/getItemImg";
 import Pagination from "./pagination";
@@ -40,16 +41,16 @@ const BodyArtist = ({ data }) => {
       };
       return fetch(url, options)
         .then((r) => r.json())
-        .then((data) => {
+        .then((fetchedData) => {
           setPageData({
-            nextUrl: data.next,
-            prevUrl: data.previous,
-            offset: data.offset,
-            limit: data.limit,
-            totalItemCount: data.total,
-            itemCount: data.items.length,
+            nextUrl: fetchedData.next,
+            prevUrl: fetchedData.previous,
+            offset: fetchedData.offset,
+            limit: fetchedData.limit,
+            totalItemCount: fetchedData.total,
+            itemCount: fetchedData.items.length,
           });
-          setAlbumData(data)
+          setAlbumData(fetchedData)
         })
         .catch((err) => setError(err));    },
     [authToken],
@@ -94,4 +95,9 @@ const BodyArtist = ({ data }) => {
   );
 };
 
+BodyArtist.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired
+}
 export default BodyArtist;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { DATATYPE_STYLES_LOOKUP } from "../../api/contants";
@@ -29,5 +30,12 @@ const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
     </div>
   );
 };
+
+Top.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  handleCloseClick: PropTypes.func.isRequired,
+  dataType: PropTypes.string.isRequired,
+}
 
 export default Top;

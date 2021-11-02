@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const ResultsItem = ({ title, img, handleClick }) => {
   return (
@@ -12,5 +13,14 @@ const ResultsItem = ({ title, img, handleClick }) => {
     </div>
   );
 };
+
+ResultsItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  img: PropTypes.shape({
+    url: PropTypes.string
+  }),
+  handleClick: PropTypes.func.isRequired
+};
+
 
 export default ResultsItem;

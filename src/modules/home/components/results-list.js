@@ -1,4 +1,5 @@
 import React, { useReducer, useContext, useState } from "react";
+import PropTypes from 'prop-types';
 import ResultsItem from "./results-item";
 import fetchMoreReducer from "../reducers/fetchMoreReducer.js";
 import { AuthContext } from "../context/auth-context";
@@ -7,6 +8,7 @@ import Modal from "./modal";
 import getItemImg from "../api/getItemImg";
 import ErrorMsg from "./error-msg";
 import ResultsListContainer from "./results-list-container";
+
 
 const ResultsList = ({ initialHits, dataType }) => {
   const { authToken } = useContext(AuthContext);
@@ -53,8 +55,8 @@ const ResultsList = ({ initialHits, dataType }) => {
             const itemImg = getItemImg(item, dataType, "small");
             return (
               <ResultsItem
-                // use index in key to handle occasions where the same item is
-                // returned multiple times
+                // use index in key to handle occasions when Spotify API
+                // returns the same item multiple times in response to search.
                 key={`${dataType}-${name}-${id}-${idx}`}
                 title={name}
                 img={itemImg}
@@ -81,5 +83,14 @@ const ResultsList = ({ initialHits, dataType }) => {
     </ResultsListContainer>
   );
 };
+
+ResultsList.propTypes = {
+  initialHits: PropTypes.shape({
+    artists: PropTypes.objectOf(PropTypes.any),
+    albums: PropTypes.objectOf(PropTypes.any),
+    tracks: PropTypes.objectOf(PropTypes.any)
+  }),
+  dataType: PropTypes.string.isRequired
+}
 
 export default ResultsList;

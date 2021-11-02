@@ -1,4 +1,5 @@
 import React, { useContext, useCallback, useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import dayjs from "dayjs";
 import { AuthContext } from "../../context/auth-context";
 import msToMin from "../../api/msToMin";
@@ -41,16 +42,16 @@ const BodyAlbum = ({ data }) => {
       };
       return fetch(url, options)
         .then((r) => r.json())
-        .then((data) => {
+        .then((fetchedData) => {
           setPageData({
-            nextUrl: data.next,
-            prevUrl: data.previous,
-            offset: data.offset,
-            limit: data.limit,
-            totalItemCount: data.total,
-            itemCount: data.items.length,
+            nextUrl: fetchedData.next,
+            prevUrl: fetchedData.previous,
+            offset: fetchedData.offset,
+            limit: fetchedData.limit,
+            totalItemCount: fetchedData.total,
+            itemCount: fetchedData.items.length,
           });
-          setTracksData(data);
+          setTracksData(fetchedData);
         })
         .catch((err) => setError(err));
     },
@@ -100,5 +101,12 @@ const BodyAlbum = ({ data }) => {
     </div>
   );
 };
+
+BodyAlbum.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+  }).isRequired
+}
 
 export default BodyAlbum;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { DATATYPE_STYLES_LOOKUP } from "../api/contants";
 
 const ResultsListContainer = ({ children, dataType }) => {
@@ -11,4 +12,10 @@ const ResultsListContainer = ({ children, dataType }) => {
     </div>
   );
 };
+
+ResultsListContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  dataType: PropTypes.string.isRequired
+};
+
 export default ResultsListContainer;
