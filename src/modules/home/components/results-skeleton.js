@@ -7,12 +7,12 @@ const ResultsSkeleton = () => {
     <SkeletonTheme baseColor={"#e0e0e0"} duration={0.9}>
       <section className="w-full">
         <Skeleton
-          containerClassName="flex justify-center gap-4 block mb-8"
+          containerClassName="flex justify-center gap-6 block mb-8"
           inline
           rectangle
           count={3}
-          height={24}
-          width={60}
+          height={36}
+          width={80}
           borderRadius={"1.25rem"}
         />
             <Skeleton
