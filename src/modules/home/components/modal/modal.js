@@ -13,7 +13,7 @@ const Modal = ({ modalData, setModalData, dataType }) => {
   const handleCloseClick = () => {
     setModalData(null);
   };
-  const itemImg = getItemImg(modalData, dataType);
+  const itemImg = getItemImg(modalData, dataType, "medium");
   const imgSrc = itemImg && `url(${itemImg.url})`;
   const RENDER_BODY_ENUM = {
     albums: <BodyAlbum data={modalData} />,
