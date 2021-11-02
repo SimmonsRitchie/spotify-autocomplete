@@ -36,7 +36,7 @@ const Top = ({ imgSrc, title, handleCloseClick, dataType }) => {
 };
 
 Top.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string,
   title: PropTypes.string.isRequired,
   handleCloseClick: PropTypes.func.isRequired,
   dataType: PropTypes.string.isRequired,

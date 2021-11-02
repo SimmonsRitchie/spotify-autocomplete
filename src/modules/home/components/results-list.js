@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useState } from "react";
+import React, { useReducer, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import ResultsItem from "./results-item";
 import fetchMoreReducer from "../reducers/fetchMoreReducer.js";
@@ -8,6 +8,7 @@ import Modal from "./modal";
 import getItemImg from "../api/getItemImg";
 import ErrorMsg from "./error-msg";
 import ResultsListContainer from "./results-list-container";
+import { scrollLock, scrollUnlock } from "../api/scrollLock";
 
 const ResultsList = ({ initialHits, dataType }) => {
   const { authToken } = useContext(AuthContext);
@@ -28,6 +29,14 @@ const ResultsList = ({ initialHits, dataType }) => {
   const displayInfo = (item) => {
     setModalData(item);
   };
+
+  useEffect(() => {
+    if (modalData) {
+      scrollLock()
+    } else {
+      scrollUnlock()
+    }
+  },[modalData])
 
   if (hasError) {
     return (
