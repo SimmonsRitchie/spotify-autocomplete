@@ -9,7 +9,7 @@ const Pagination = ({ data, nextPage, prevPage }) => {
   const disabledStyles = "opacity-30";
   const itemsEnd = offset + itemCount;
   return (
-    <div className="flex gap-4 justify-end w-full text-base">
+    <div className="flex gap-4 justify-end w-full text-sm">
       <div className="text-gray-500">
         {offset}-{itemsEnd} of {totalItemCount}
       </div>
