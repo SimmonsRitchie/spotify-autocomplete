@@ -27,7 +27,7 @@ const Home = ({ authToken }) => {
     <Layout>
       <div className="w-full max-w-5xl flex flex-col gap-12 justify-center items-center">
         <Hed />
-        <div className="flex flex-col items-center gap-7">
+        <div className="flex flex-col items-center gap-7 w-full">
           <input
             className="shadow appearance-none border rounded-lg w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline sm:w-96"
             type="text"

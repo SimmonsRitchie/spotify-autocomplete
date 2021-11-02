@@ -16,14 +16,14 @@ const Pagination = ({ data, nextPage, prevPage }) => {
       <div className="flex gap-4 text-gray-700">
         {" "}
         <button
-          className={` ${!prevUrl ? disabledStyles : ""}`}
+          className={`${!prevUrl ? disabledStyles : "hover:text-gray-500"} `}
           onClick={prevPage}
           disabled={!prevUrl}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button
-          className={`${!nextUrl ? disabledStyles : ""}`}
+          className={`${!nextUrl ? disabledStyles : "hover:text-gray-500"}`}
           onClick={nextPage}
           disabled={!nextUrl}
         >

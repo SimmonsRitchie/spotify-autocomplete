@@ -66,7 +66,7 @@ const ResultsList = ({ initialHits, dataType }) => {
       {next && (
         <div className="w-full flex justify-center mt-10">
           <button
-            className="bg-red-500 text-gray-50 font-semibold text-sm px-8 py-2 rounded-r-full rounded-l-full uppercase "
+            className="bg-red-500 hover:bg-red-600 text-gray-50 font-semibold text-sm px-8 py-2 rounded-r-full rounded-l-full uppercase "
             onClick={loadMore}
           >
             {isLoading ? "loading..." : "More results"}
