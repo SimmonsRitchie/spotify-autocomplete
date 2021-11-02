@@ -1,6 +1,6 @@
 # Spotify autocomplete search
 
-A React app to search for artist, albums, and tracks powered by [Spotify's Web API](https://developer.spotify.com/documentation/web-api/).
+An app to search for artist, albums, and tracks using [Spotify's Web API](https://developer.spotify.com/documentation/web-api/). Built with React and styled with TailwindCSS.
 
 ## Getting started
 
@@ -24,11 +24,11 @@ Installation of this project requires Node.js and, preferably [NVM](https://gith
 
 4. Sign up for developer access to [Spotify's Web API](https://developer.spotify.com/documentation/web-api/). Take note of your Client ID and Client Secret key.
 
-5. Set up a .env file using the .env template provided in this repo.
+5. Set up a .env file using the .env template provided in this repo:
 
    `cp .env.example .env`
 
-Set your Spotify Client ID and Client Secret to the REACT_APP_CLIENT_ID and REACT_APP_CLIENT_SECRET variables.
+Set your Spotify Client ID and Client Secret to the REACT_APP_CLIENT_ID and REACT_APP_CLIENT_SECRET variables. Please note that it is also important to set SKIP_PREFLIGHT_CHECK to true, which prevents a bug relating to craco when building the project.
 
 ### Local dev
 
