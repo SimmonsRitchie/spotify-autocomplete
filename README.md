@@ -2,6 +2,8 @@
 
 An app to search for artist, albums, and tracks using [Spotify's Web API](https://developer.spotify.com/documentation/web-api/). Built with React and styled with TailwindCSS.
 
+[View demo](https://tune-finder.herokuapp.com/)
+
 ## Getting started
 
 ### Install
