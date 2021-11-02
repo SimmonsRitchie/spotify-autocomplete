@@ -16,7 +16,7 @@ const App = () => {
   if (!authToken) {
     return (
       <Layout>
-        <div className="my-14">Connecting to Spotify...</div>
+        <div className="mt-14 mb-6 text-gray-50 text-xl animate-pulse	">Connecting to Spotify...</div>
         <Spinner />
       </Layout>
     );

@@ -3,7 +3,7 @@ import React from 'react'
 const Spinner = () => {
 
   let outerCircleColor = 'border-gray-50' // use tailwind class
-  let semiCircleColor = 'rgb(109, 114, 113, 0.2)' // use hex
+  let semiCircleColor = 'rgb(255, 255, 255, 0.4)' // use hex
   const classNameSize = 'w-24 h-24'
   const borderThickness = 'border-8'
   return (
