@@ -22,11 +22,13 @@ Installation of this project requires Node.js and, preferably [NVM](https://gith
 
    `npm i`
 
-4. Set up a .env file.
+4. Sign up for developer access to [Spotify's Web API](https://developer.spotify.com/documentation/web-api/). Take note of your Client ID and Client Secret key.
+
+5. Set up a .env file using the .env template provided in this repo.
 
 ```cp .env.example .env```
 
-Add your Spotify Client ID and client secret to the file.
+Add your Spotify Client ID and Client Secret to the file.
 
 ### Local dev
 
